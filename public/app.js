@@ -131,6 +131,9 @@ Total Amount: $${totalAmount.toFixed(2)}
 
         // Display summary in a more user-friendly way
         alert(summary);
+
+        // Added a console log for debugging
+        console.log('Payments generated successfully');
     });
 
     // Initial fetch of payment groups
