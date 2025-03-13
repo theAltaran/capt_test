@@ -112,8 +112,25 @@ document.addEventListener('DOMContentLoaded', () => {
             group.payments.filter(payment => payment.selected)
         );
 
-        // Display selected payments (you can modify this to do something more specific)
-        alert(`Selected Payments:\n${selectedPayments.map(p => `${p.name}: $${p.amount.toFixed(2)}`).join('\n')}`);
+        if (selectedPayments.length === 0) {
+            alert('No payments selected. Please select at least one payment.');
+            return;
+        }
+
+        // Calculate total amount
+        const totalAmount = selectedPayments.reduce((sum, payment) => sum + payment.amount, 0);
+
+        // Create a detailed summary
+        const summary = `
+Selected Payments Summary:
+-------------------------
+${selectedPayments.map(p => `${p.name}: $${p.amount.toFixed(2)}`).join('\n')}
+-------------------------
+Total Amount: $${totalAmount.toFixed(2)}
+        `;
+
+        // Display summary in a more user-friendly way
+        alert(summary);
     });
 
     // Initial fetch of payment groups
